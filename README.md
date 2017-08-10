@@ -25,7 +25,7 @@ To design each new Minifigure you can go off of a template Minifigure that has t
 **In programming, a prototype is an object that supplies base behavior to a second object.**
 The second object inherits the base behavior and can then further customize the base behavior.  This second object in turn could be the prototype for a third object and so on, forming a **prototype tree**. 
 
-The Javascript interpreter workd by searching up the prototype tree until the property is found.  The interpreter will look for the property on an object.  If it can't find it there, it will look at the object's prototype, and so on.  If no property is ever found, it returns undefined.
+When looking for a property on an object, the Javascript interpreter works by searching up the prototype tree until the property is found.  The interpreter will look for the property on an object.  If it can't find it there, it will look at the object's prototype, and so on.  If no property is ever found, it returns undefined.
 
 **The last stop at the very top of the prototype tree is Object.prototype, from which all reference types inherit by default.**
 
@@ -75,7 +75,9 @@ var chocChip = {
 	extras: "chocolate chips",
 	time: "20 min",
 	directions: function(){
-		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
+		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, 
+
+		and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
 	}
 }
 ```
@@ -87,7 +89,9 @@ var peanutButter = {
 	extras: "peanut butter",
 	time: "25 min",
 	directions: function(){
-		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
+		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, 
+
+		and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
 	}
 }
 ```
@@ -99,21 +103,23 @@ function Cookie(extras, time) {
   this.extras = extras;
   this.time = time;
   this.directions = function() {
-    console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`)
+    console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, 
+
+    and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`)
   }
 }
 ```
 
 ```javascript
 var cChip = new Cookie("choco chips", "20 min");
-var pButter = new Cookie("peanut butter", "24 min”)
+var pButter = new Cookie("peanut butter", "24 min");
 ```
 
 Constructors are like regular functions, but we call them with the "new" keyword to create new objects from the same prototype.  A constructor is useful when you want to create multiple similar objects with the same properties and methods.  It's a convention to capitalize the name of constructors to distinguish them from regular functions.
 
 When we use the "new" keyword, we create a new instance of Cookie and assign it to a variable.  The constructor assigns the received parameters (for example, extras and time) to the properties of the current instance.
 
-Sidenote about "this"
+Sidenote about "this":
 * In Javascript, "this" is the object that "owns" the Javascript code.
 * The value of "this", when used in a function, is the object that "owns" the function.
 * The value of "this", when used in an object, is the object itself.
