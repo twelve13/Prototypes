@@ -64,4 +64,59 @@ How come childObj.b returned 3 and not 2?
 
 Property shadowing.
 
-![prototypes diagram](protoimage.png).
+![prototypes diagram](protoimage.png)
+
+### Constructors
+
+```javascript
+var chocChip = {
+	category: "dessert",
+	"base-ingredients": ["flour", "sugar", "eggs"],
+	extras: "chocolate chips",
+	time: "20 min",
+	directions: function(){
+		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
+	}
+}
+```
+
+```javascript
+var peanutButter = {
+	category: "dessert",
+	"base-ingredients": ["flour", "sugar", "eggs"],
+	extras: "peanut butter",
+	time: "25 min",
+	directions: function(){
+		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
+	}
+}
+```
+
+```javascript
+function Cookie(extras, time) {
+  this.category = "dessert";
+  this["base-ingredients"] = ["flour", "sugar", "eggs"]
+  this.extras = extras;
+  this.time = time;
+  this.directions = function() {
+    console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`)
+  }
+}
+```
+
+```javascript
+var cChip = new Cookie("choco chips", "20 min");
+var pButter = new Cookie("peanut butter", "24 min”)
+```
+
+Constructors are like regular functions, but we call them with the "new" keyword to create new objects from the same prototype.  A constructor is useful when you want to create multiple similar objects with the same properties and methods.  It's a convention to capitalize the name of constructors to distinguish them from regular functions.
+
+When we use the "new" keyword, we create a new instance of Cookie and assign it to a variable.  The constructor assigns the received parameters (for example, extras and time) to the properties of the current instance.
+
+Sidenote about "this"
+* In Javascript, "this" is the object that "owns" the Javascript code.
+* The value of "this", when used in a function, is the object that "owns" the function.
+* The value of "this", when used in an object, is the object itself.
+* The "this" keyword in an object constructor does not have a value.  It is only a substitute for the new object.
+* The value of "this" will become the new object when the constructor is used to create a new object.
+
