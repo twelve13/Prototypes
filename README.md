@@ -76,8 +76,7 @@ var chocChip = {
 	time: "20 min",
 	directions: function(){
 		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, 
-
-		and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
+		and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`)
 	}
 }
 ```
@@ -90,8 +89,7 @@ var peanutButter = {
 	time: "25 min",
 	directions: function(){
 		console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, 
-
-		and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`
+		and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`)
 	}
 }
 ```
@@ -104,7 +102,6 @@ function Cookie(extras, time) {
   this.time = time;
   this.directions = function() {
     console.log(`Mix ${this["base-ingredients"][0]}, ${this["base-ingredients"][1]}, 
-
     and ${this["base-ingredients"][2]}, then add in ${this.extras}.  Bake for ${this.time}.`)
   }
 }
@@ -115,7 +112,7 @@ var cChip = new Cookie("choco chips", "20 min");
 var pButter = new Cookie("peanut butter", "24 min");
 ```
 
-Constructors are like regular functions, but we call them with the "new" keyword to create new objects from the same prototype.  A constructor is useful when you want to create multiple similar objects with the same properties and methods.  It's a convention to capitalize the name of constructors to distinguish them from regular functions.
+**Constructors are like regular functions, but we call them with the "new" keyword to create new objects from the same prototype.**  A constructor is useful when you want to create multiple similar objects with the same properties and methods.  It's a convention to capitalize the name of constructors to distinguish them from regular functions.
 
 When we use the "new" keyword, we create a new instance of Cookie and assign it to a variable.  The constructor assigns the received parameters (for example, extras and time) to the properties of the current instance.
 
@@ -125,4 +122,6 @@ Sidenote about "this":
 * The value of "this", when used in an object, is the object itself.
 * The "this" keyword in an object constructor does not have a value.  It is only a substitute for the new object.
 * The value of "this" will become the new object when the constructor is used to create a new object.
+
+It is a good idea to use namespacing to organize code.  A namespace is a context in which variables can exist without conflicting with other variables of the same name elsewhere.  You can avoid naming conflict by encapsulating your code in an object that is unlikely to collide with other objects.
 
