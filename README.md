@@ -34,33 +34,33 @@ See list of available list of Object.prototype properties and methods.  These ar
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype)
 
 ```javascript
-var parentObj = {
+var parentObject = {
 	a:1,
 	b:2
 }
 ```
-parentObj.a   //returns 1
+parentObject.a   //returns 1
 
-parentObj.hasOwnProperty('a')   //returns true
+parentObject.hasOwnProperty('a')   //returns true
 
 Where did this hasOwnProperty property come from?
 
 ```javascript
-var childObj = Object.create(parentObj);
-childObj.b = 3;
-childObj.c = 4
+var childObject = Object.create(parentObject);
+childObject.b = 3;
+childObject.c = 4
 ```
 What do you think will be returned for:
-* childObj.c
-* childObj.b
-* childObj.a
-* childObj.d
+* childObject.c
+* childObject.b
+* childObject.a
+* childObject.d
 
-How did we get a value for childObj.a without explicitly stating an "a" property for childObj?
+How did we get a value for childObject.a without explicitly stating an "a" property for childObject?
 
-Inhertance from parentObj.
+Inhertance from parentObject.
 
-How come childObj.b returned 3 and not 2?
+How come childObject.b returned 3 and not 2?
 
 Property shadowing.
 
